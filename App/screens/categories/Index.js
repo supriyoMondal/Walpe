@@ -1,14 +1,12 @@
 import React, { Fragment } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { useTheme } from 'react-native-paper'
-import { colors } from '../../assets/colors'
-import CustomHeader from '../../components/header'
+import { useTheme } from '@react-navigation/native'
+
 
 const Categories = ({ navigation }) => {
-
+    const { colors } = useTheme();
     return (
         <Fragment>
-            <CustomHeader navigation={navigation} />
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.dark }}>
                 <Text style={{ color: "#fff" }}>Categories</Text>
             </View>

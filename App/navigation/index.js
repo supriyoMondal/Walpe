@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import { NavigationContainer, useTheme, DefaultTheme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -8,6 +8,7 @@ import Home from '../screens/Home/Index';
 import { Icon } from 'native-base';
 import Categories from '../screens/categories/Index';
 import { colors } from '../assets/colors'
+import { images } from '../assets/images';
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -23,6 +24,7 @@ const CustomTabs = () => {
             inactiveColor={textDark}
         >
             <Tab.Screen
+
                 name="Home"
                 component={Home}
                 options={{
@@ -58,15 +60,47 @@ const CustomTabs = () => {
 }
 
 const AppScreens = () => {
+    const { colors: { darkLight, textLight, textDark } } = useTheme();
     return (
         <Stack.Navigator
             screenOptions={{
-                headerTitle: null,
-                headerTransparent: true,
-                headerTintColor: "#fff"
+                headerTitle: 'Wallpapers',
+                headerStyle: {
+                    backgroundColor: darkLight
+                },
+                headerTintColor: "#fff",
+                headerTitleStyle: {
+                    letterSpacing: 1, color: colors.textLight, fontFamily: 'Lato-Regular'
+                },
+                headerLeft: () => {
+                    return (
+                        <TouchableOpacity
+                            activeOpacity={0.7}>
+                            <Image source={images.fire} style={{ width: 24, height: 24, marginLeft: 25 }} />
+                        </TouchableOpacity>
+                    )
+                }
             }}>
             <Stack.Screen
-                name="HomePage">
+                name="HomePage"
+                options={{
+                    headerRight: () => {
+                        return (
+                            <View style={{ flexDirection: 'row', justifyContent: "space-around" }}>
+                                <TouchableOpacity activeOpacity={0.7}
+                                    style={{ marginHorizontal: 5 }}>
+                                    <Icon name="ios-options"
+                                        type="Ionicons" style={{ color: textLight, fontSize: 24 }} />
+                                </TouchableOpacity>
+                                <TouchableOpacity activeOpacity={0.7} style={{ marginHorizontal: 15 }}>
+                                    <Icon name="search"
+                                        type="Ionicons" style={{ color: textLight, fontSize: 24 }} />
+                                </TouchableOpacity>
+                            </View>
+                        )
+                    }
+                }}
+            >
                 {(props) => <CustomTabs {...props} />}
             </Stack.Screen>
         </Stack.Navigator>
