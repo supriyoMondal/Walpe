@@ -9,6 +9,9 @@ import { Icon } from 'native-base';
 import Categories from '../screens/categories/Index';
 import { colors } from '../assets/colors'
 import { images } from '../assets/images';
+import { connect } from 'react-redux'
+import { toggleModalVisibility } from '../actions/wallpaperActions';
+
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -59,7 +62,7 @@ const CustomTabs = () => {
     )
 }
 
-const AppScreens = () => {
+const AppScreens = ({ toggleModalVisibility }) => {
     const { colors: { darkLight, textLight, textDark } } = useTheme();
     return (
         <Stack.Navigator
@@ -87,7 +90,9 @@ const AppScreens = () => {
                     headerRight: () => {
                         return (
                             <View style={{ flexDirection: 'row', justifyContent: "space-around" }}>
-                                <TouchableOpacity activeOpacity={0.7}
+                                <TouchableOpacity
+                                    onPress={() => toggleModalVisibility()}
+                                    activeOpacity={0.7}
                                     style={{ marginHorizontal: 5 }}>
                                     <Icon name="ios-options"
                                         type="Ionicons" style={{ color: textLight, fontSize: 24 }} />
@@ -107,7 +112,7 @@ const AppScreens = () => {
     )
 }
 
-const MainNavigator = () => {
+const MainNavigator = ({ toggleModalVisibility }) => {
     const myTheme = {
         ...DefaultTheme,
         colors: {
@@ -118,12 +123,16 @@ const MainNavigator = () => {
         <Fragment>
             <StatusBar backgroundColor={colors.darkLight} barStyle='light-content' />
             <NavigationContainer theme={myTheme}>
-                <AppScreens />
+                <AppScreens toggleModalVisibility={toggleModalVisibility} />
             </NavigationContainer>
         </Fragment>
     )
 }
 
-export default MainNavigator
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, { toggleModalVisibility })(MainNavigator);
 
 const styles = StyleSheet.create({})
