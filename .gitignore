@@ -2,6 +2,8 @@
 #
 .DS_Store
 
+/App/config
+
 # Xcode
 #
 build/
