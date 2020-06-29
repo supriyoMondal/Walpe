@@ -1,7 +1,6 @@
 import React, { useEffect, Fragment } from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, StatusBar } from 'react-native'
 import { colors } from '../../assets/colors'
-import CustomHeader from '../../components/header'
 import { Icon } from 'native-base'
 import { useTheme } from '@react-navigation/native'
 

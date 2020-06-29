@@ -1,6 +1,6 @@
 import 'react-native-gesture-handler';
-import React from 'react'
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
+import React, { Fragment } from 'react'
+import { StyleSheet, Text, View, Image, TouchableOpacity, StatusBar } from 'react-native'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 import { NavigationContainer, useTheme, DefaultTheme } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
@@ -115,9 +115,12 @@ const MainNavigator = () => {
         }
     }
     return (
-        <NavigationContainer theme={myTheme}>
-            <AppScreens />
-        </NavigationContainer>
+        <Fragment>
+            <StatusBar backgroundColor={colors.darkLight} barStyle='light-content' />
+            <NavigationContainer theme={myTheme}>
+                <AppScreens />
+            </NavigationContainer>
+        </Fragment>
     )
 }
 
