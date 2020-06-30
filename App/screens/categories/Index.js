@@ -19,6 +19,7 @@ const Categories = ({ navigation }) => {
     const CategoryListItem = ({ item }) => {
         return (
             <TouchableOpacity
+                onPress={() => navigation.navigate('SelectedCategory', { searchQuery: item, type: 'category' })}
                 activeOpacity={0.8}
                 style={styles.categoryItemContainer}>
                 <Image
@@ -43,6 +44,7 @@ const Categories = ({ navigation }) => {
                         style={styles.colorScrollbar}>
                         {allColors.map((c, index) => (
                             <TouchableOpacity
+                                onPress={() => navigation.navigate('SelectedCategory', { searchQuery: c, type: 'colors' })}
                                 key={index}
                                 activeOpacity={0.8}
                                 style={{ width: 73, height: 85 }}>

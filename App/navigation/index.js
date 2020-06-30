@@ -11,7 +11,11 @@ import { colors } from '../assets/colors'
 import { images } from '../assets/images';
 import { connect } from 'react-redux'
 import { toggleModalVisibility } from '../actions/wallpaperActions';
+import SelectedCategory from '../screens/categories/SelectedCategory';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 
+
+const drawer = createDrawerNavigator();
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -107,6 +111,25 @@ const AppScreens = ({ toggleModalVisibility }) => {
                 }}
             >
                 {(props) => <CustomTabs {...props} />}
+            </Stack.Screen>
+            <Stack.Screen
+                name="SelectedCategory"
+                options={{
+                    headerTitle: null,
+                    headerTransparent: true,
+                    headerLeft: null
+                    // headerLeft: () => {
+                    //     return (
+                    //         <View style={{ marginLeft: 10, padding: 10, alignItems: 'center', justifyContent: 'center' }}>
+                    //             <Icon
+                    //                 onPress={({ navigation }) => { console.log(navigation) }}
+                    //                 name="arrow-back" type="MaterialIcons" style={{ color: "#fff" }} />
+                    //         </View>
+                    //     )
+                    // }
+                }}
+            >
+                {(props) => <SelectedCategory {...props} />}
             </Stack.Screen>
         </Stack.Navigator>
     )
