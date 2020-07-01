@@ -40,16 +40,9 @@ const SelectedCategory = ({ navigation, route: { params: { searchQuery, type } }
     return (
         <View style={{ flex: 1, backgroundColor: colors.dark, position: 'relative' }}>
             <View style={styles.headerContainer}>
-                {/* <TouchableOpacity style={{ position: 'absolute', top: 0, left: 20, zIndex: 1000 }}>
-                    <Text>hello</Text>
-                </TouchableOpacity> */}
                 <Text style={styles.headerText}>{searchQuery}</Text>
             </View>
-            <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                style={{ position: 'absolute', top: 0, left: 20, zIndex: 10 }}>
-                <Icon name='arrow-back' type="MaterialIcons" style={{ color: "#fff" }} />
-            </TouchableOpacity>
+
             {(!wallpapers || wallpapers.length == 0) ?
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                     <ActivityIndicator size='large' color="#eee" />
@@ -72,6 +65,6 @@ const SelectedCategory = ({ navigation, route: { params: { searchQuery, type } }
 export default SelectedCategory
 
 const styles = StyleSheet.create({
-    headerText: { fontSize: 23, letterSpacing: 1, color: colors.textLight, fontFamily: 'Lato-Regular', marginLeft: 70 },
-    headerContainer: { width: width, height: 60, backgroundColor: colors.darkLight, justifyContent: 'center' }
+    headerText: { fontSize: 23, letterSpacing: 1, color: colors.textLight, fontFamily: 'Lato-Regular', marginLeft: 60 },
+    headerContainer: { width: width, height: 60, backgroundColor: colors.darkLight, justifyContent: 'center', paddingBottom: 5 }
 });

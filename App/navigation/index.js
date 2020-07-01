@@ -78,14 +78,6 @@ const AppScreens = ({ toggleModalVisibility }) => {
                 headerTintColor: "#fff",
                 headerTitleStyle: {
                     letterSpacing: 1, color: colors.textLight, fontFamily: 'Lato-Regular'
-                },
-                headerLeft: () => {
-                    return (
-                        <TouchableOpacity
-                            activeOpacity={0.7}>
-                            <Image source={images.fire} style={{ width: 24, height: 24, marginLeft: 25 }} />
-                        </TouchableOpacity>
-                    )
                 }
             }}>
             <Stack.Screen
@@ -107,6 +99,14 @@ const AppScreens = ({ toggleModalVisibility }) => {
                                 </TouchableOpacity>
                             </View>
                         )
+                    },
+                    headerLeft: () => {
+                        return (
+                            <TouchableOpacity
+                                activeOpacity={0.7}>
+                                <Image source={images.fire} style={{ width: 24, height: 24, marginLeft: 25 }} />
+                            </TouchableOpacity>
+                        )
                     }
                 }}
             >
@@ -116,17 +116,7 @@ const AppScreens = ({ toggleModalVisibility }) => {
                 name="SelectedCategory"
                 options={{
                     headerTitle: null,
-                    headerTransparent: true,
-                    headerLeft: null
-                    // headerLeft: () => {
-                    //     return (
-                    //         <View style={{ marginLeft: 10, padding: 10, alignItems: 'center', justifyContent: 'center' }}>
-                    //             <Icon
-                    //                 onPress={({ navigation }) => { console.log(navigation) }}
-                    //                 name="arrow-back" type="MaterialIcons" style={{ color: "#fff" }} />
-                    //         </View>
-                    //     )
-                    // }
+                    headerTransparent: true
                 }}
             >
                 {(props) => <SelectedCategory {...props} />}
