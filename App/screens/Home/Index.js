@@ -8,11 +8,13 @@ import { fetchWallpaper, clearData, toggleModalVisibility, changeOrder } from '.
 
 const { width, height } = Dimensions.get('screen')
 
-export const FlatListItem = ({ item: { largeImageURL, webformatURL } }) => {
+export const FlatListItem = ({ navigation, item }) => {
     const { colors } = useTheme();
+    const { largeImageURL, webformatURL } = item;
     return (
         <TouchableOpacity
             activeOpacity={0.5}
+            onPress={() => navigation.navigate('Single', { item })}
             style={{ backgroundColor: colors.darkLight, width: (width - 30) / 3, marginHorizontal: 4, height: height / 3.7, marginBottom: 8, borderRadius: 8, alignItems: 'center', justifyContent: 'center' }}>
             <Image
                 source={{ uri: webformatURL }}

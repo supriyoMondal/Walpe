@@ -13,6 +13,7 @@ import { connect } from 'react-redux'
 import { toggleModalVisibility } from '../actions/wallpaperActions';
 import SelectedCategory from '../screens/categories/SelectedCategory';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import Single from '../screens/Single/Single';
 
 
 const drawer = createDrawerNavigator();
@@ -120,6 +121,15 @@ const AppScreens = ({ toggleModalVisibility }) => {
                 }}
             >
                 {(props) => <SelectedCategory {...props} />}
+            </Stack.Screen>
+            <Stack.Screen
+                name="Single"
+                options={{
+                    headerTitle: null,
+                    headerTransparent: true
+                }}
+            >
+                {(props) => <Single {...props} />}
             </Stack.Screen>
         </Stack.Navigator>
     )
