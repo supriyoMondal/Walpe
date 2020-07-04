@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react'
-import { StyleSheet, Text, View, ActivityIndicator, StatusBar } from 'react-native'
+import { StyleSheet, Text, View, ActivityIndicator, StatusBar, Image } from 'react-native'
 import { colorsFromUrl } from 'react-native-dominant-color'
 import LinearGradient from 'react-native-linear-gradient';
 import { colors } from '../../assets/colors';
@@ -36,8 +36,28 @@ const Single = ({ navigation, route: { params: { item } } }) => {
     return (
         <Fragment>
             <StatusBar backgroundColor={colorPalate.light} />
-            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} colors={[colorPalate.light, colorPalate.average]} style={{ flex: 1 }}>
-
+            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 0, y: 1 }} colors={[colorPalate.light, colorPalate.average]} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <View style={{
+                    shadowColor: "#000",
+                    shadowOffset: {
+                        width: 0,
+                        height: 9,
+                    },
+                    shadowOpacity: 0.50,
+                    shadowRadius: 12.35,
+                    elevation: 19,
+                    backgroundColor: 'rgba(0,0,0,.5)',
+                    width: '77%', height: "80%",
+                    borderRadius: 13
+                }}>
+                    <Image
+                        source={{ uri: largeImageURL }}
+                        style={{
+                            width: '100%', height: '100%',
+                            borderRadius: 13
+                        }}
+                    />
+                </View>
             </LinearGradient>
         </Fragment>
     )
